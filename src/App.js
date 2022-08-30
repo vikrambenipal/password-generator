@@ -1,24 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Copy from './components/Copy';
+import PasswordForm from './components/PasswordForm';
+import { Box } from "@mui/system";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box display="flex" flexDirection="column" alignItems="center">
+      <h1>Password Generator</h1>
+      <Copy />
+      <PasswordForm />
+    </Box>
   );
 }
 
