@@ -1,10 +1,12 @@
 import React from 'react'
+import Bar from './Bar';
 import { Box } from "@mui/system";
 import { Checkbox } from '@mui/material';
 import { Slider } from '@mui/material';
 import { Button } from '@mui/material';
 
 const PasswordForm = () => {
+
   return (
     <Box border="2px solid black" width="90%">
       <Box display="flex" lexDirection="row" justifyContent="space-between">
@@ -37,11 +39,20 @@ const PasswordForm = () => {
           <p>Include Symbols</p>
         </Box>
       </Box>
-      <Box>
-        <p>STRENGTH</p>
-        <p>MEDIUM</p>
+      <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+        <Box display="flex" flexDirection="row" justifyContent="space-between" width="80%">
+          <p>STRENGTH</p>
+          <Box display="flex" flexDirection="row" marginRight="8px">
+            <p style={{ marginRight: '16px' }}>MEDIUM</p>
+            <Bar />
+            <Bar />
+            <Bar />
+            <Bar />
+            <Bar />
+          </Box>
+        </Box>
+        <Button style={{ width: '80%', marginBottom: '32px'}}  color="primary" variant="contained">GENERATE</Button>
       </Box>
-      <Button color="primary" variant="contained">GENERATE</Button>
     </Box>
   )
 }
