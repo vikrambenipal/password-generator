@@ -5,7 +5,7 @@ import { Checkbox } from '@mui/material';
 import { Slider } from '@mui/material';
 import { Button } from '@mui/material';
 
-const PasswordForm = () => {
+const PasswordForm = ({ setPassword }) => {
 
   const [length, setLength] = useState(10);
   const [strength, setStrength] = useState("STRENGTH");
@@ -37,7 +37,7 @@ const PasswordForm = () => {
     }
   }
   const handleGenerate = () => {
-    
+
   }
 
   return (
