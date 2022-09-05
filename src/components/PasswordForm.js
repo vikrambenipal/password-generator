@@ -8,10 +8,38 @@ import { Button } from '@mui/material';
 const PasswordForm = () => {
 
   const [length, setLength] = useState(10);
+  const [strength, setStrength] = useState("STRENGTH");
+
+  const [hasLower, setHasLower] = useState(false);
+  const [hasUpper, setHasUpper] = useState(false);
+  const [hasNumber, setHasNumber] = useState(false);
+  const [hasSymbol, setHasSymbol] = useState(false);
 
   const handleChange = (e) => {
     setLength(e.target.value);
   }
+  const handleCheckbox = (e) => {
+    const id = e.target.id;
+    switch(id){
+      case "lower":
+        setHasLower(!hasLower)
+        break;
+      case "upper":
+        setHasUpper(!hasUpper)
+        break;
+      case "number":
+        setHasNumber(!hasNumber)
+        break;
+      case "symbol":
+        setHasSymbol(!hasSymbol)
+        break;
+      default:
+    }
+  }
+  const handleGenerate = () => {
+    
+  }
+
   return (
     <Box border="2px solid black" width="90%">
       <Box display="flex" flexDirection="row" justifyContent="space-between">
@@ -31,35 +59,35 @@ const PasswordForm = () => {
       </Box>
       <Box padding="0 3%">
         <Box display="flex" flexDirection="row">
-          <Checkbox/>
+          <Checkbox id="upper" onClick={handleCheckbox}/>
           <p>Include Uppercase Letters</p>
         </Box>
         <Box display="flex" flexDirection="row">
-          <Checkbox/>
+          <Checkbox id="lower" onClick={handleCheckbox}/>
           <p>Include Lowercase Letters</p>
         </Box>
         <Box display="flex" flexDirection="row">
-          <Checkbox/>
+          <Checkbox id="number" onClick={handleCheckbox}/>
           <p>Include Numbers</p>
         </Box>
         <Box display="flex" flexDirection="row">
-          <Checkbox/>
+          <Checkbox id="symbol" onClick={handleCheckbox}/>
           <p>Include Symbols</p>
         </Box>
       </Box>
       <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
         <Box display="flex" flexDirection="row" justifyContent="space-between" width="90%">
-          <p>STRENGTH</p>
+          <p>{strength}</p>
           <Box display="flex" flexDirection="row" marginRight="8px">
             <p style={{ marginRight: '16px' }}>MEDIUM</p>
             <Bar />
             <Bar />
             <Bar />
             <Bar />
-            <Bar />
           </Box>
         </Box>
-        <Button style={{ width: '90%', marginBottom: '32px'}}  color="primary" variant="contained">GENERATE</Button>
+        <Button onClick={handleGenerate} 
+        style={{ width: '90%', marginBottom: '32px'}}  color="primary" variant="contained">GENERATE</Button>
       </Box>
     </Box>
   )
