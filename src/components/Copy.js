@@ -6,8 +6,8 @@ const Copy = () => {
   return (
     <Box border="2px solid black" width="90%" marginBottom="16px">
         <Box display="flex" flexDirection="row" justifyContent="space-between">
-            <p>Password</p>
-            <img src={iconCopy} style={{alignSelf: 'center'}}/>
+            <p style={{ paddingLeft: "5%"}}>Password</p>
+            <img src={iconCopy} style={{alignSelf: 'center', paddingRight: "5%"}}/>
         </Box>
     </Box>
   )

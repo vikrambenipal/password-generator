@@ -15,19 +15,21 @@ const PasswordForm = () => {
   return (
     <Box border="2px solid black" width="90%">
       <Box display="flex" flexDirection="row" justifyContent="space-between">
-        <p>Character Length</p>
-        <p>{length}</p>
+        <p style={{ paddingLeft: "5%"}}>Character Length</p>
+        <p style={{ paddingRight: "5%"}}>{length}</p>
       </Box>
-      <Slider
-          size="medium"
-          defaultValue={10}
-          onChange={handleChange}
-          min={0}
-          max={20}
-          aria-label="Small"
-          valueLabelDisplay="auto"
-      />
-      <Box>
+      <Box padding="0 5%">
+        <Slider
+            size="medium"
+            defaultValue={10}
+            onChange={handleChange}
+            min={0}
+            max={20}
+            aria-label="Small"
+            valueLabelDisplay="auto"
+        />
+      </Box>
+      <Box padding="0 3%">
         <Box display="flex" flexDirection="row">
           <Checkbox/>
           <p>Include Uppercase Letters</p>
@@ -46,7 +48,7 @@ const PasswordForm = () => {
         </Box>
       </Box>
       <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-        <Box display="flex" flexDirection="row" justifyContent="space-between" width="80%">
+        <Box display="flex" flexDirection="row" justifyContent="space-between" width="90%">
           <p>STRENGTH</p>
           <Box display="flex" flexDirection="row" marginRight="8px">
             <p style={{ marginRight: '16px' }}>MEDIUM</p>
@@ -57,7 +59,7 @@ const PasswordForm = () => {
             <Bar />
           </Box>
         </Box>
-        <Button style={{ width: '80%', marginBottom: '32px'}}  color="primary" variant="contained">GENERATE</Button>
+        <Button style={{ width: '90%', marginBottom: '32px'}}  color="primary" variant="contained">GENERATE</Button>
       </Box>
     </Box>
   )
