@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Bar from './Bar';
 import { Box } from "@mui/system";
 import { Checkbox } from '@mui/material';
@@ -7,15 +7,21 @@ import { Button } from '@mui/material';
 
 const PasswordForm = () => {
 
+  const [length, setLength] = useState(10);
+
+  const handleChange = (e) => {
+    setLength(e.target.value);
+  }
   return (
     <Box border="2px solid black" width="90%">
-      <Box display="flex" lexDirection="row" justifyContent="space-between">
+      <Box display="flex" flexDirection="row" justifyContent="space-between">
         <p>Character Length</p>
-        <p>10</p>
+        <p>{length}</p>
       </Box>
       <Slider
           size="medium"
           defaultValue={10}
+          onChange={handleChange}
           min={0}
           max={20}
           aria-label="Small"
