@@ -10,7 +10,6 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${theme.app_background_color}
   }
 `
-
 function App() {
   const [password, setPassword] = useState("P4$5WOrD!");
   return (
