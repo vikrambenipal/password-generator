@@ -5,6 +5,7 @@ import { Checkbox } from '@mui/material';
 import { Slider } from '@mui/material';
 import { Button } from '@mui/material';
 import zxcvbn from 'zxcvbn';
+import arrowIcon from '../assets/images/icon-arrow-right.svg';
 import strengthLevel from '../strength';
 import theme from '../theme';
 
@@ -118,8 +119,23 @@ const PasswordForm = ({ setPassword }) => {
             <Bar number={4} strength={strength}/>
           </Box>
         </Box>
-        <Button onClick={handleGenerate} sx={{ color: 'black', backgroundColor: theme.neon_green }}
-        style={{ width: '90%', marginBottom: '32px'}} variant="contained">GENERATE</Button>
+        <Button onClick={handleGenerate} 
+        sx={{ color: 'black', 
+          backgroundColor: theme.neon_green, 
+          ":hover": { 
+            border: '1px solid ' + theme.neon_green, 
+            bgcolor: theme.box_background_color, 
+            color: theme.neon_green,
+            "img": {
+              filter: "invert(87%) sepia(9%) saturate(1462%) hue-rotate(71deg) brightness(101%) contrast(107%)",
+            }
+          },
+        }}
+        style={{ paddingTop: '12px', 
+          paddingBottom: '12px', 
+          width: '90%', 
+          marginBottom: '32px'
+        }} variant="contained">GENERATE<span><img style={{ alignSelf: 'center', marginLeft: '18px'}} src={arrowIcon} alt=""/></span></Button>
       </Box>
     </Box>
   )
