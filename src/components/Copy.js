@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box } from "@mui/system";
+import zxcvbn from 'zxcvbn';
 import iconCopy from '../assets/images/icon-copy.svg'
 
 const Copy = ({ password }) => {

@@ -4,11 +4,13 @@ import { Box } from "@mui/system";
 import { Checkbox } from '@mui/material';
 import { Slider } from '@mui/material';
 import { Button } from '@mui/material';
+import zxcvbn from 'zxcvbn';
+import { setSelectionRange } from '@testing-library/user-event/dist/utils';
 
 const PasswordForm = ({ setPassword }) => {
 
   const [length, setLength] = useState(10);
-  const [strength, setStrength] = useState("STRENGTH");
+  const [strength, setStrength] = useState("");
 
   const [hasLower, setHasLower] = useState(false);
   const [hasUpper, setHasUpper] = useState(false);
@@ -38,6 +40,34 @@ const PasswordForm = ({ setPassword }) => {
   }
   const handleGenerate = () => {
 
+    let newPassword = ""
+    let chars = "";
+    if(hasLower) chars += "abcdefghijklmnopqrstuvwxyz";
+    if(hasUpper) chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    if(hasNumber) chars += "1234567890";
+    if(hasSymbol) chars += "!@#$%^&*()";
+
+    if(chars === ""){
+      return;
+    }
+
+    console.log(length)
+    for(var i = 0; i < length; ++i){
+      var randomNumber = Math.floor(Math.random() * chars.length);
+      newPassword += chars[randomNumber];
+    }
+    
+    const score = zxcvbn(newPassword).score;
+    if(score <= 1){
+      setStrength("TOO WEAK!")
+    }else if(score === 2){
+      setStrength("WEAK")
+    }else if(score === 3){
+      setStrength("MEDIUM")
+    }else{
+      setStrength("STRONG")
+    }
+    setPassword(newPassword);
   }
 
   return (
@@ -77,9 +107,9 @@ const PasswordForm = ({ setPassword }) => {
       </Box>
       <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
         <Box display="flex" flexDirection="row" justifyContent="space-between" width="90%">
-          <p>{strength}</p>
+          <p>STRENGTH</p>
           <Box display="flex" flexDirection="row" marginRight="8px">
-            <p style={{ marginRight: '16px' }}>MEDIUM</p>
+            <p style={{ marginRight: '16px' }}>{strength}</p>
             <Bar />
             <Bar />
             <Bar />
