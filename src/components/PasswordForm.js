@@ -5,7 +5,7 @@ import { Checkbox } from '@mui/material';
 import { Slider } from '@mui/material';
 import { Button } from '@mui/material';
 import zxcvbn from 'zxcvbn';
-import { setSelectionRange } from '@testing-library/user-event/dist/utils';
+import strengthLevel from '../strength';
 
 const PasswordForm = ({ setPassword }) => {
 
@@ -59,13 +59,13 @@ const PasswordForm = ({ setPassword }) => {
     
     const score = zxcvbn(newPassword).score;
     if(score <= 1){
-      setStrength("TOO WEAK!")
+      setStrength(strengthLevel.veryWeak)
     }else if(score === 2){
-      setStrength("WEAK")
+      setStrength(strengthLevel.weak)
     }else if(score === 3){
-      setStrength("MEDIUM")
+      setStrength(strengthLevel.medium)
     }else{
-      setStrength("STRONG")
+      setStrength(strengthLevel.strong)
     }
     setPassword(newPassword);
   }
@@ -110,10 +110,10 @@ const PasswordForm = ({ setPassword }) => {
           <p>STRENGTH</p>
           <Box display="flex" flexDirection="row" marginRight="8px">
             <p style={{ marginRight: '16px' }}>{strength}</p>
-            <Bar />
-            <Bar />
-            <Bar />
-            <Bar />
+            <Bar number={1} strength={strength}/>
+            <Bar number={2} strength={strength}/>
+            <Bar number={3} strength={strength}/>
+            <Bar number={4} strength={strength}/>
           </Box>
         </Box>
         <Button onClick={handleGenerate} 
