@@ -6,6 +6,7 @@ import { Slider } from '@mui/material';
 import { Button } from '@mui/material';
 import zxcvbn from 'zxcvbn';
 import strengthLevel from '../strength';
+import theme from '../theme';
 
 const PasswordForm = ({ setPassword }) => {
 
@@ -47,11 +48,8 @@ const PasswordForm = ({ setPassword }) => {
     if(hasNumber) chars += "1234567890";
     if(hasSymbol) chars += "!@#$%^&*()";
 
-    if(chars === ""){
-      return;
-    }
+    if(chars === "") return; 
 
-    console.log(length)
     for(var i = 0; i < length; ++i){
       var randomNumber = Math.floor(Math.random() * chars.length);
       newPassword += chars[randomNumber];
@@ -71,10 +69,10 @@ const PasswordForm = ({ setPassword }) => {
   }
 
   return (
-    <Box border="2px solid black" width="90%">
+    <Box width="90%" backgroundColor={theme.box_background_color}>
       <Box display="flex" flexDirection="row" justifyContent="space-between">
         <p style={{ paddingLeft: "5%"}}>Character Length</p>
-        <p style={{ paddingRight: "5%"}}>{length}</p>
+        <p style={{ color: theme.neon_green, paddingRight: "5%"}}>{length}</p>
       </Box>
       <Box padding="0 5%">
         <Slider
@@ -85,29 +83,33 @@ const PasswordForm = ({ setPassword }) => {
             max={20}
             aria-label="Small"
             valueLabelDisplay="auto"
+            sx={{ color: theme.neon_green, 
+              '& .MuiSlider-thumb': { color: theme.almost_white }, 
+              '& .MuiSlider-rail': { color: theme.app_background_color }}}
         />
       </Box>
       <Box padding="0 3%">
         <Box display="flex" flexDirection="row">
-          <Checkbox id="upper" onClick={handleCheckbox}/>
+          <Checkbox id="upper" onClick={handleCheckbox} sx={{ color: theme.neon_green, '&.Mui-checked': { color: theme.neon_green }}}/>
           <p>Include Uppercase Letters</p>
         </Box>
         <Box display="flex" flexDirection="row">
-          <Checkbox id="lower" onClick={handleCheckbox}/>
+          <Checkbox id="lower" onClick={handleCheckbox} sx={{ color: theme.neon_green, '&.Mui-checked': { color: theme.neon_green }}}/>
           <p>Include Lowercase Letters</p>
         </Box>
         <Box display="flex" flexDirection="row">
-          <Checkbox id="number" onClick={handleCheckbox}/>
+          <Checkbox id="number" onClick={handleCheckbox} sx={{ color: theme.neon_green, '&.Mui-checked': { color: theme.neon_green }}}/>
           <p>Include Numbers</p>
         </Box>
         <Box display="flex" flexDirection="row">
-          <Checkbox id="symbol" onClick={handleCheckbox}/>
+          <Checkbox id="symbol" onClick={handleCheckbox} sx={{ color: theme.neon_green, '&.Mui-checked': { color: theme.neon_green }}}/>
           <p>Include Symbols</p>
         </Box>
       </Box>
       <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-        <Box display="flex" flexDirection="row" justifyContent="space-between" width="90%">
-          <p>STRENGTH</p>
+        <Box display="flex" flexDirection="row" justifyContent="space-between" width="90%" 
+        backgroundColor={theme.app_background_color} marginTop="10px" marginBottom="30px">
+          <p style={{ paddingLeft: "32px" }}>STRENGTH</p>
           <Box display="flex" flexDirection="row" marginRight="8px">
             <p style={{ marginRight: '16px' }}>{strength}</p>
             <Bar number={1} strength={strength}/>
@@ -116,8 +118,8 @@ const PasswordForm = ({ setPassword }) => {
             <Bar number={4} strength={strength}/>
           </Box>
         </Box>
-        <Button onClick={handleGenerate} 
-        style={{ width: '90%', marginBottom: '32px'}}  color="primary" variant="contained">GENERATE</Button>
+        <Button onClick={handleGenerate} sx={{ color: 'black', backgroundColor: theme.neon_green }}
+        style={{ width: '90%', marginBottom: '32px'}} variant="contained">GENERATE</Button>
       </Box>
     </Box>
   )

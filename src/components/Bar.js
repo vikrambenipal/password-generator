@@ -31,7 +31,7 @@ const Bar = ({ number, strength }) => {
       width="10px" 
       height="28px" 
       marginRight="8px" 
-      border="2px solid black">
+      border={"2px solid " + theme.almost_white}>
     </Box>
   )
 }
