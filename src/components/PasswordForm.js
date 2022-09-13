@@ -122,6 +122,7 @@ const PasswordForm = ({ setPassword }) => {
         <Button onClick={handleGenerate} 
         sx={{ color: 'black', 
           backgroundColor: theme.neon_green, 
+          fontFamily: "JetBrainsMonoBold",
           ":hover": { 
             border: '1px solid ' + theme.neon_green, 
             bgcolor: theme.box_background_color, 

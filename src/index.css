@@ -6,10 +6,25 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-p,h1,h2{
+p,h2{
   color: white;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+@font-face {
+  font-family: JetBrainsMonoBold;
+  src: url('assets/fonts/static/JetBrainsMono-Bold.ttf');
+}
+@font-face {
+  font-family: JetBrainsMono;
+  src: url('assets/fonts/JetBrainsMono-VariableFont_wght.ttf');
+}
+
+p {
+  font-family: JetBrainsMono;
+}
+h1 {
+  font-family: JetBrainsMonoBold;;
 }

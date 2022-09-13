@@ -16,7 +16,7 @@ function App() {
     <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" 
     margin="80px auto 0px auto" maxWidth="600px">
       <GlobalStyle />
-      <h1>Password Generator</h1>
+      <h1 style={{ color: theme.grey, fontSize: '20px', marginBottom: '20px' }}>Password Generator</h1>
       <Copy password={password}/>
       <PasswordForm setPassword={setPassword}/>
     </Box>
