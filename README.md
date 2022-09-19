@@ -1,5 +1,5 @@
 # Password Generator App
-## Built using React.js and Material UI
+## Built using React.js, Material UI and zxcvbn API
 
 This app generates a random password according to the user's specification (lowercase letters, uppercase letters, symbols, numbers, length). 
 Once a password is generated the app will indicate how strong that password is and the user is able to copy onto their clipboard. 
