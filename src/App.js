@@ -14,7 +14,7 @@ function App() {
   const [password, setPassword] = useState("P4$5WOrD!");
   return (
     <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" 
-    margin="80px auto 0px auto" maxWidth="600px">
+    margin="40px auto 0px auto" maxWidth="600px">
       <GlobalStyle />
       <h1 style={{ color: theme.grey, fontSize: '20px', marginBottom: '20px' }}>Password Generator</h1>
       <Copy password={password}/>
